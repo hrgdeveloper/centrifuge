@@ -34,6 +34,13 @@ public class PublicationEvent {
 
     private long offset;
 
+    public boolean isDelta() {
+        return delta;
+    }
+
+
+    private boolean delta;
+
     public Map<String, String> getTags() {
         return tags;
     }
