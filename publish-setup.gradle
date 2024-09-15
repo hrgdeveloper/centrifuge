@@ -1,19 +1,21 @@
+apply plugin: 'maven-publish'
+
 allprojects {
+    group = "com.github.hrgdeveloper"
+    version = "1.0"
+
     plugins.withId("com.vanniktech.maven.publish.base") {
         project.group = "io.github.centrifugal"
         project.version = "0.4.1"
 
         mavenPublishing {
             publishToMavenCentral()
-
-            // Signing will be applied to non-snapshot builds.
-            // Uses credentials as described above, supports both regular and in memory signing.
             signAllPublications()
 
             pom {
                 name = 'Centrifuge Java'
                 description = 'Android and General Java client for Centrifugo server and Centrifuge library'
-                url = 'https://github.com/centrifugal/centrifuge-java'
+                url = 'https://github.com/YourGitHubUsername/centrifuge-java'
 
                 licenses {
                     license {
@@ -31,9 +33,23 @@ allprojects {
                 }
 
                 scm {
-                    connection = 'scm:git:git://github.com/centrifugal/centrifuge-java.git'
-                    developerConnection = 'scm:git:ssh://github.com:centrifugal/centrifuge-java.git'
-                    url = 'http://github.com/centrifugal/centrifuge-java'
+                    connection = 'scm:git:git://github.com/YourGitHubUsername/centrifuge-java.git'
+                    developerConnection = 'scm:git:ssh://github.com:YourGitHubUsername/centrifuge-java.git'
+                    url = 'http://github.com/YourGitHubUsername/centrifuge-java'
+                }
+            }
+        }
+    }
+
+    // Add this block for JitPack compatibility
+    afterEvaluate {
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    from components.release
+                    groupId = 'com.github.hrgdeveloper'
+                    artifactId = 'centrifuge'
+                    version = '1.0'
                 }
             }
         }
