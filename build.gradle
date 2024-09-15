@@ -1,3 +1,7 @@
+plugins {
+    id 'maven-publish' // Add this line
+}
+
 buildscript {
     repositories {
         google()
@@ -23,5 +27,13 @@ subprojects {
         mavenCentral()
     }
 }
-
-apply from: './publish-setup.gradle'
+publishing {
+    publications {
+        release(MavenPublication) {
+            from components.release
+            groupId = 'com.github.hrgdeveloper' // This should match your GitHub username
+            artifactId = 'centrifuge'
+            version = '1.0.0' // You can set this as needed
+        }
+    }
+}
