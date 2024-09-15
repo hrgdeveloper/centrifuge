@@ -23,6 +23,12 @@ allprojects {
     }
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11)) // Switch to Java 11
+    }
+}
+
 subprojects {
     repositories {
         mavenCentral()
