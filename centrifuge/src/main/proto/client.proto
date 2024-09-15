@@ -199,6 +199,7 @@ message SubscribeRequest {
   bool positioned = 9;
   bool recoverable = 10;
   bool join_leave = 11;
+  string delta = 12;
 }
 
 message SubscribeResult {
